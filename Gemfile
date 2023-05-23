@@ -75,3 +75,9 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 4.0'
+end
+
+gem 'devise'
