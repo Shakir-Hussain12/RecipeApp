@@ -1,0 +1,7 @@
+<h1>My Recipes</h1>
+
+<% @recipes.each do |recipe| %>
+  <p><%= recipe.name %> (Quantity: <%= recipe.quantity %>)</p>
+<% end %>
+
+<%= link_to 'Add New Recipe', new_recipe_path %>
