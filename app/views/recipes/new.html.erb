@@ -1,0 +1,13 @@
+<h1>Add New Recipe</h1>
+
+<%= form_with(model: @recipe, url: recipes_path) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :quantity %>
+  <%= form.number_field :quantity %>
+
+  <%= form.submit 'Add Recipe' %>
+<% end %>
+
+<%= link_to 'Back to My Recipes', recipes_path %>
