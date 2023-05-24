@@ -2,7 +2,11 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @recipes = current_user.recipes
+    @recipes = Recipe.all
+  end
+
+  def show
+    @recipe = Recipe.find(params[:id])
   end
 
   def new
@@ -10,17 +14,35 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = current_user.recipes.build(recipe_params)
+    @user = current_user
+    @recipe = @user.recipes.new(params[:recipe])
+
     if @recipe.save
-      redirect_to recipes_path, notice: 'Recipe added successfully.'
+      redirect_to recipes_path, notice: t('.success')
     else
-      render :new
+      render :new, alert: t('.failure')
     end
+  end
+
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to recipes_path, notice: t('.success')
+  rescue ActiveRecord::RecordNotFound
+    redirect_to recipes_path, alert: t('.failure')
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(recipe_params)
+    redirect_to recipe_path(@recipe), notice: t('.success')
+  rescue ActiveRecord::RecordNotFound
+    redirect_to recipe_path(@recipe), alert: t('.failure')
   end
 
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :quantity)
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end
