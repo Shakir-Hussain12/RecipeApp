@@ -1,46 +1,46 @@
 .form-container {
-    max-width: 40%;
-    margin: auto;
-    box-shadow: 3px 7px 5px 10px gray;
-    border-radius: 15px;
-    padding: 3% 0;
-    margin-top: 3%;
-    padding-inline-start: 2%;
+  max-width: 40%;
+  margin: auto;
+  box-shadow: 3px 7px 5px 10px gray;
+  border-radius: 15px;
+  padding: 3% 0;
+  margin-top: 3%;
+  padding-inline-start: 2%;
 }
 
 .form-container > h2 {
-    margin: 0 auto;
-    text-decoration: underline;
-    text-align: center;
-    text-transform: capitalize;
+  margin: 0 auto;
+  text-decoration: underline;
+  text-align: center;
+  text-transform: capitalize;
 }
 
 .logo > img {
-    max-width: 45%;
-    margin: 0 27%;
-}
-
-.field input:not(:nth-of-type(2)) {
-    height: 30px;
-    min-width: 90%;
-    border-radius: 5px;
-    filter: drop-shadow(2px 3px 4px black);
-    border: none;
-    margin-bottom: 2%;
-    outline: none;
+  max-width: 45%;
+  margin: 0 27%;
 }
 
 .actions > input {
-    padding: 1%;
-    min-width: 15%;
-    border-radius: 10px;
-    margin: 2% auto;
-    box-shadow: 5px 5px 5px blueviolet;
+  padding: 1%;
+  min-width: 15%;
+  border-radius: 10px;
+  margin: 2% auto;
+  box-shadow: 5px 5px 5px blueviolet;
+}
+
+.field input:not(:nth-of-type(2)) {
+  height: 30px;
+  min-width: 90%;
+  border-radius: 5px;
+  filter: drop-shadow(2px 3px 4px black);
+  border: none;
+  margin-bottom: 2%;
+  outline: none;
 }
 
 .actions > input:hover {
-    background-color: green;
-    color: white;
-    box-shadow: 5px 5px 5px black;
-    cursor: pointer;
+  background-color: green;
+  color: white;
+  box-shadow: 5px 5px 5px black;
+  cursor: pointer;
 }
