@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -12,5 +11,5 @@ Rails.application.routes.draw do
     root to: 'devise/sessions#new'
   end
 
-  resources :recipes, only: %i[index new create]
+  resources :recipes, except: :edit
 end
