@@ -10,6 +10,7 @@ class Ability
       can :read, Post # Regular users can read posts
       can :create, Post # Regular users can create new posts
       can :manage, Post, user_id: user.id # Regular users can manage their own posts
+      can :manage, Recipe, user_id: user.id
     end
   end
 end
