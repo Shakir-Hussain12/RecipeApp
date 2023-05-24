@@ -80,6 +80,5 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0'
 end
 
-gem 'devise'
 gem 'cancancan'
-
+gem 'devise'

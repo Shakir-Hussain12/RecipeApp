@@ -12,5 +12,5 @@ Rails.application.routes.draw do
     root to: 'devise/sessions#new'
   end
 
-  resources :recipes, only: [:index, :new, :create]
+  resources :recipes, only: %i[index new create]
 end
