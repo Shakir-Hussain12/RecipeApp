@@ -1,0 +1,12 @@
+<%= button_to 'Add New Food', new_food_path, method: :get, class: 'add-btn' %>
+<div class="food-container">
+    <table class="food-table">
+        <tr class="head-row">
+          <th class="heading">Name</th>
+          <th class="heading">Measurement Unit</th>
+          <th class="heading">Unit Price(USD)</th>
+          <th class="heading">Action(s)</th>
+        </tr>
+        <%= render partial: 'list_foods', collection: foods, as: :food %>
+      </table>
+</div>
