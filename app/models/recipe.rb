@@ -7,11 +7,21 @@ class Recipe < ApplicationRecord
   validates :description, presence: true, length: { minimum: 10, maximum: 500 }, allow_blank: false
   validates :public, inclusion: { in: [true, false] }
 
+
   def show_description?(current_user)
     public || user.admin? || user == current_user
   end
 
   def owner?(current_user)
     user == current_user || user.admin?
+  end
+  
+  after_save :update_count
+
+  private
+
+  def update_count
+    user.update(foods_count: user.foods.count)
+
   end
 end
