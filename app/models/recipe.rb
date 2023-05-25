@@ -8,10 +8,10 @@ class Recipe < ApplicationRecord
   validates :public, inclusion: { in: [true, false] }
 
   after_save :update_count
+
   private
 
   def update_count
     user.update(foods_count: user.foods.count)
   end
-
 end
