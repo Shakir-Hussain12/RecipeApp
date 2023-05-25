@@ -1,0 +1,30 @@
+<div class="food-form">
+    <div class="my-form">
+        <%= form_with(model: @food, url: foods_path, local: true, method: :post) do |form| %>
+        <div class="field">
+            <%= form.label :name %><br>
+            <%= form.text_field :name, required: true %>
+        </div>
+
+        <div class="field">
+            <%= form.label :measurement %><br>
+            <%= form.text_field:measurement, required: true %>
+        </div>
+
+        <div class="field">
+            <%= form.label :quantity %><br>
+            <%= form.text_field:quantity, required: true %>
+        </div>
+
+        <div class="field">
+            <%= form.label :price %><br>
+            <%= form.text_field:price, required: true %>
+        </div>
+
+        <div class="food-btn">
+            <%= form.submit %>
+        </div>
+
+        <% end %>
+    </div>
+</div>

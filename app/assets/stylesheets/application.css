@@ -1,11 +1,17 @@
-.form-container {
+.form-container,
+.food-form {
   max-width: 40%;
   margin: auto;
-  box-shadow: 3px 7px 5px 10px gray;
+  box-shadow: 7px 7px 10px 10px gray;
   border-radius: 15px;
   padding: 3% 0;
   margin-top: 3%;
   padding-inline-start: 2%;
+}
+
+.food-form {
+  max-width: 25%;
+  margin-top: 10%;
 }
 
 .form-container > h2 {
@@ -20,12 +26,19 @@
   margin: 0 27%;
 }
 
-.actions > input {
+.actions > input,
+.food-btn > input {
   padding: 1%;
   min-width: 15%;
   border-radius: 10px;
   margin: 2% auto;
   box-shadow: 5px 5px 5px blueviolet;
+}
+
+.food-btn > input {
+  padding: 2%;
+  min-width: 25%;
+  margin: 5% 33% 0 33%;
 }
 
 .field input:not(:nth-of-type(2)) {
@@ -38,7 +51,8 @@
   outline: none;
 }
 
-.actions > input:hover {
+.actions > input:hover,
+.food-btn > input:hover {
   background-color: green;
   color: white;
   box-shadow: 5px 5px 5px black;
