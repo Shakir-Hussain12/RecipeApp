@@ -1,0 +1,12 @@
+<%= button_to 'Add New Food', new_food_path, class: 'add-btn' %>
+<div class="food-container">
+    <table class="food-table">
+        <tr class="head-row">
+          <th class="heading">Food</th>
+          <th class="heading">Measurement Unit</th>
+          <th class="heading">Unit Price</th>
+          <th class="heading">Delete</th>
+        </tr>
+        <%= render partial: 'list_foods' %>
+      </table>
+</div>

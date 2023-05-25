@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   resources :recipes, only: %i[index new create]
 
   # Defines the root path route ("/")
-  authenticated :user do
-    root to: 'recipes#index', as: :authenticated_root
-  end
+  # authenticated :user do
+  #   root to: 'recipes#index', as: :authenticated_root
+  # end
 
   devise_scope :user do
     root to: 'devise/sessions#new'
