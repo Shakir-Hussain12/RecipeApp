@@ -1,12 +1,15 @@
-<div class="public-recipe">
-    <h1>
-        <%= recipe.name %>
-    </h1>
-    <p>
-        <%= recipe.description %>
-    </p>
-    <p>
-        Cooking Time: <%= recipe.cooking_time %>
-        Preperation Time: <%= recipe.preparation_time %>
-    </p>
-</div>
+<%= link_to recipe_path(1), class: 'link' do %>
+    <div class="public-recipe">
+        <h1>
+            <%= recipe.name %>
+        </h1>
+        <p>
+            <%= recipe.description %>
+        </p>
+        <p>
+            Cooking Time: <%= recipe.cooking_time %>
+            Preperation Time: <%= recipe.preparation_time %>
+        </p>
+    </div>
+<% end %>
+

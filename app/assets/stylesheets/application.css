@@ -96,6 +96,27 @@ tbody {
   font-family: sans-serif;
 }
 
+.public-recipes-container {
+  max-width: 40%;
+  margin: 10% auto;
+}
+
+.public-recipes-container > h2{
+  text-align: center;
+}
+
+.public-recipe {
+  border: 3px solid;
+  border-radius: 20px;
+  padding: 1% 5%;
+  margin-bottom: 5%;
+  color: black;
+}
+
+.link {
+  text-decoration: none;  
+}
+
 .heading + .heading {
   padding-left: 20px;
 }

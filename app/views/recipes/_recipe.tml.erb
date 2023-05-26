@@ -4,7 +4,7 @@
     <%= link_to recipe.name, recipe_path(recipe) %>
     </div>
     <div>
-      <% if can? :detroy, recipe %>
+      <% if can? :destroy, recipe %>
         <%= link_to(t('common.remove'), recipe_path(recipe), data: {
           turbo_method: :delete,
           turbo_confirm: t('.confirm_delete')
