@@ -30,4 +30,23 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  common:
+    remove: "Remove"
+  recipes:
+    show:
+      preparation_time: "Preparation time"
+      cooking_time: "Cooking time"
+      public: "Public"
+      generate_shopping_list: "Generate shopping list"
+      add_ingredient: "Add ingredient"
+    update:
+      success: "Recipe was successfully updated."
+      failure: "Recipe was not updated."
+    create:
+      success: "Recipe was successfully created."
+      failure: "Recipe was not created."
+    destroy:
+      success: "Recipe was successfully destroyed."
+      failure: "Recipe was not destroyed."
+    recipe:
+      confirm_delete: "Are you sure you want to delete this recipe?"
