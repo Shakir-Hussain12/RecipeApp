@@ -11,7 +11,7 @@
 
 .food-form {
   max-width: 25%;
-  margin-top: 10%;
+  margin-top: 8%;
 }
 
 .form-container > h2 {
@@ -26,8 +26,13 @@
   margin: 0 27%;
 }
 
+.food-btn {
+   display: flex;
+}
+
 .actions > input,
-.food-btn > input {
+.food-btn > input,
+.special-btn {
   padding: 1%;
   min-width: 15%;
   border-radius: 10px;
@@ -36,9 +41,10 @@
 }
 
 .food-btn > input {
-  padding: 2%;
+  margin: 2%;
+  padding: 3%;
   min-width: 25%;
-  margin: 5% 33% 0 33%;
+  margin: 3% 30% 0 30%;
 }
 
 .field input:not(:nth-of-type(2)) {
@@ -51,6 +57,41 @@
   outline: none;
 }
 
+.buttons,
+.food-buttons {
+  display: flex;
+  min-width: 20%;
+  justify-content: space-between;
+  position: fixed;
+  top: 5vh;
+  right: 5%;
+}
+
+.food-buttons {
+  min-width: 45%;
+}
+
+.btn {
+  border-radius: 15px;
+  padding: 1%;
+  box-shadow: 5px 5px 5px 2px gray;
+  font-family: cursive;
+}
+
+.special-btn {
+  min-width: 0;
+  position: fixed;
+  right: 5%;
+  top: 2vh;
+  box-shadow: 5px 5px 5px 2px gray;
+}
+
+.btn:hover {
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+}
+
 .actions > input:hover,
 .food-btn > input:hover {
   background-color: green;
@@ -59,19 +100,9 @@
   cursor: pointer;
 }
 
-.add-btn {
-  position: fixed;
-  right: 5%;
-  top: 5vh;
-  border-radius: 15px;
-  padding: 1%;
-  font-family: cursive;
-}
-
-.add-btn:hover {
-  background-color: green;
+.special-btn:hover {
+  background-color: red;
   color: white;
-  cursor: pointer;
 }
 
 .food-container {
