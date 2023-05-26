@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_25_042537) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_26_000626) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "foods", force: :cascade do |t|
-    t.string "name"
-    t.string "measurement"
-    t.decimal "price"
+    t.string "name", null: false
+    t.string "measurement", null: false
+    t.decimal "price", null: false
     t.integer "quantity", default: 0
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -25,12 +25,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_25_042537) do
     t.index ["user_id"], name: "index_foods_on_user_id"
   end
 
+  create_table "public_recipes", force: :cascade do |t|
+    t.integer "quanitity", default: 0
+    t.bigint "food_id", null: false
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_id"], name: "index_public_recipes_on_food_id"
+    t.index ["recipe_id"], name: "index_public_recipes_on_recipe_id"
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.string "name", null: false
     t.integer "preparation_time", default: 0, null: false
     t.integer "cooking_time", default: 0, null: false
     t.string "description", null: false
-    t.boolean "public", default: false, null: false
+    t.boolean "public", default: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -57,5 +67,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_25_042537) do
   end
 
   add_foreign_key "foods", "users"
+  add_foreign_key "public_recipes", "foods"
+  add_foreign_key "public_recipes", "recipes"
   add_foreign_key "recipes", "users"
 end

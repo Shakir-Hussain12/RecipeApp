@@ -1,36 +1,41 @@
 class FoodsController < ApplicationController
-  # before_action :get_foods
+  before_action :fetch_foods
 
   def index
-    # testing
-    foods = []
-    foods.push(Food.new(name: 'Biryani', measurement: 'KGs', price: '2.00', quantity: 1, user_id: 1))
-    foods.push(Food.new(name: 'Karahi', measurement: 'KGs', price: '1.50', quantity: 1, user_id: 1))
-    foods.push(Food.new(name: 'Korma', measurement: 'KGs', price: '1.00', quantity: 1, user_id: 1))
-    render 'index', locals: { foods: }
+    render 'index', locals: { foods: @foods }
   end
 
-  def new; end
+  def new
+    @food = Food.new
+  end
 
   def create
-    @food = current_user.foods.build(food_params)
+    @food = current_user.foods.new(food_params)
     if @food.save
       flash[:success] = 'Food created successfully'
       redirect_to foods_path
     else
       flash[:alert] = "Food couldn't be created"
-      render 'new'
+      redirect_to new_food_path
     end
   end
 
-  def delete; end
+  def destroy
+    puts 'deleting'
+    @food = Food.find(params[:id])
+    @food.destroy
+    redirect_to foods_path, flash: { success: t('Deleted Successfully') }
+  rescue ActiveRecord::RecordNotFound
+    redirect_to foods_path, flash: { alert: t('Deletion Failed') }
+  end
 
   private
 
-  # get_foods = -> { posts = Food.where(id: current_user.id) }
-  # define_method :get_foods, get_foods
+  def fetch_foods
+    @foods = Food.where(user_id: current_user.id)
+  end
 
   def food_params
-    params.require(:food).permit(:name, :measurement, :price)
+    params.require(:food).permit(:name, :measurement, :quantity, :price)
   end
 end
