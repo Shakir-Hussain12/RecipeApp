@@ -101,7 +101,7 @@ tbody {
   margin: 10% auto;
 }
 
-.public-recipes-container > h2{
+.public-recipes-container > h2 {
   text-align: center;
 }
 
@@ -114,7 +114,7 @@ tbody {
 }
 
 .link {
-  text-decoration: none;  
+  text-decoration: none;
 }
 
 .heading + .heading {

@@ -82,4 +82,4 @@ end
 
 gem 'cancancan'
 gem 'devise'
-gem "jquery-rails"
+gem 'jquery-rails'

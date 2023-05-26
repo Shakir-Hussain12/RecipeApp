@@ -1,8 +1,8 @@
 class FoodsController < ApplicationController
-  before_action :get_foods
+  before_action :fetch_foods
 
   def index
-    render 'index', locals: { foods: @foods}
+    render 'index', locals: { foods: @foods }
   end
 
   def new
@@ -31,7 +31,7 @@ class FoodsController < ApplicationController
 
   private
 
-  def get_foods
+  def fetch_foods
     @foods = Food.where(user_id: current_user.id)
   end
 
