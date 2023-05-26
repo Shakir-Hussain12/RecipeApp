@@ -24,5 +24,4 @@ class Recipe < ApplicationRecord
   def update_count
     user.update(recipes_count: user.recipes.size)
   end
-  
 end

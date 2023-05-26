@@ -15,5 +15,4 @@ class Food < ApplicationRecord
   def update_count
     user.update(foods_count: user.foods.size)
   end
-  
 end
