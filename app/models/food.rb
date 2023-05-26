@@ -1,5 +1,7 @@
 class Food < ApplicationRecord
   belongs_to :user
+  has_many :public_recipes
+  has_many :recipes, through: :public_recipes
 
   validates :name, presence: true
   validates :measurement, presence: true
@@ -7,10 +9,10 @@ class Food < ApplicationRecord
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   after_save :update_count
+
   private
 
   def update_count
     user.update(foods_count: user.foods.count)
   end
-  
 end
