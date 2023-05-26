@@ -22,6 +22,6 @@ class Recipe < ApplicationRecord
   private
 
   def update_count
-    user.update(foods_count: user.foods.count)
+    user.update(recipes_count: user.recipes.count)
   end
 end
