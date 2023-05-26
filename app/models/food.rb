@@ -13,6 +13,7 @@ class Food < ApplicationRecord
   private
 
   def update_count
-    user.update(foods_count: user.foods.count)
+    user.update(foods_count: user.foods.size)
   end
+  
 end

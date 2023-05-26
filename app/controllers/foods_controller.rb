@@ -32,7 +32,7 @@ class FoodsController < ApplicationController
   private
 
   def fetch_foods
-    @foods = Food.where(user_id: current_user.id)
+    @foods = Food.includes(:user).where(user_id: current_user.id)
   end
 
   def food_params
