@@ -2,6 +2,7 @@
   <%= button_to 'Add New Food', new_food_path, method: :get, class: 'btn' %>
   <%= button_to 'Show All Recipes', recipes_path , method: :get, class: 'btn' %>
   <%= button_to 'Show Public Recipes', public_recipes_path , method: :get, class: 'btn' %>
+  <%= button_to 'Log-Out', destroy_user_session_path, method: :delete, class: 'btn' %>
 </div>
 <div class="food-container">
   <h1 style="text-align: center;">Food List</h1>

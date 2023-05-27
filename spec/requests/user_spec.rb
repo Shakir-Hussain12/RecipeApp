@@ -31,7 +31,7 @@ RSpec.describe 'Users', type: :request do
     it 'returns http success' do
       get new_user_registration_path
       expect(response).to have_http_status(200)
-    end.
+    end
 
     it 'renders the new template' do
       get new_user_registration_path
@@ -77,5 +77,4 @@ RSpec.describe 'Users', type: :request do
       expect(response.body).to include('Forgot your password?')
     end
   end
-  
 end

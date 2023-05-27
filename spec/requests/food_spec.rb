@@ -6,9 +6,9 @@ RSpec.describe 'Foods', type: :request do
                         password_confirmation: '123456', confirmation_token: nil, confirmed_at: Time.now)
     @recipe = Recipe.create(name: 'Test recipe', preparation_time: 10.2, cooking_time: 20.3,
                             description: 'Test description', public: true, user_id: @user.id)
-    @food = Food.create(name: 'Test food', price: 12.2, quantity: 4, measurement_unit: 'pce', user_id: @user.id)
-    @food_two = Food.create(name: 'Test food two', price: 12.2, quantity: 4, measurement_unit: 'pce', user_id: @user.id)
-    @recipe_food = RecipeFood.create(quantity: 10, recipe_id: @recipe.id, food_id: @food.id)
+    @food = Food.create(name: 'Test food', price: 12.2, quantity: 4, measurement: 'pce', user_id: @user.id)
+    @food_two = Food.create(name: 'Test food two', price: 12.2, quantity: 4, measurement: 'pce', user_id: @user.id)
+    @recipe_food = PublicRecipe.create(quanitity: 10, recipe_id: @recipe.id, food_id: @food.id)
     post user_session_path params: { user: { email: @user.email, password: @user.password } }
   end
 
@@ -47,7 +47,7 @@ RSpec.describe 'Foods', type: :request do
 
     it 'displays the food price' do
       get foods_path
-      expect(response.body).to include(@food.price)
+      expect(response.body).to include(@food.price.to_s)
     end
 
     it 'displays the food measurement' do

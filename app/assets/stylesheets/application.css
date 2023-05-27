@@ -59,7 +59,7 @@
 .buttons,
 .food-buttons {
   display: flex;
-  min-width: 20%;
+  min-width: 30%;
   justify-content: space-between;
   position: fixed;
   top: 5vh;
@@ -67,7 +67,7 @@
 }
 
 .food-buttons {
-  min-width: 45%;
+  min-width: 50%;
 }
 
 .btn {

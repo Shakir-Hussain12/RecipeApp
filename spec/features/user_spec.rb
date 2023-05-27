@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe 'Users', type: :feature do
   before(:each) do
-    @user = User.create(name: 'Test user', email: 'test444@gmail.com', password: '123456', password_confirmation: '123456',
+    @user = User.create(name: 'Test user', email: 'test123@gmail.com', password: '123456', password_confirmation: '123456',
                         confirmation_token: nil, confirmed_at: Time.now)
   end
 
   describe 'sign in page' do
     scenario 'should have a sign in page' do
       visit new_user_session_path
-      expect(page).to have_content('Log in')
+      expect(page).to have_content('Log-in')
     end
 
     scenario 'should have a sign in form' do
@@ -33,7 +33,7 @@ RSpec.describe 'Users', type: :feature do
       expect(page).to have_link('Forgot your password?')
     end
 
-    scenario 'should have dint receive confirmation instructions link' do
+    scenario 'should have did not receive confirmation instructions link' do
       visit new_user_session_path
       expect(page).to have_link("Didn't receive confirmation instructions?")
     end
@@ -51,13 +51,13 @@ RSpec.describe 'Users', type: :feature do
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: ''
       click_button 'Log in'
-      expect(page).to have_content('Log in')
+      expect(page).to have_content('Invalid Email or password.')
     end
 
     scenario 'when user clicks on sign up link it will redirect to sign up page' do
       visit new_user_session_path
       click_link 'Sign up'
-      expect(page).to have_content('Already have an account? Login')
+      expect(page).to have_content('Sign-up')
     end
 
     scenario 'when user clicks on forgot password link it will redirect to forgot password page' do
@@ -76,7 +76,7 @@ RSpec.describe 'Users', type: :feature do
   describe 'sign up page' do
     scenario 'should have a sign up page' do
       visit new_user_registration_path
-      expect(page).to have_content('Already have an account? Login')
+      expect(page).to have_content('Sign-up')
     end
 
     scenario 'should have a sign up form' do
@@ -94,17 +94,17 @@ RSpec.describe 'Users', type: :feature do
 
     scenario 'should have a sign in link' do
       visit new_user_registration_path
-      expect(page).to have_content('Already have an account? Login')
+      expect(page).to have_content('Log in')
     end
 
-    scenario 'when user signs up with valid credential it will redirect to login page' do
+    scenario 'when user signs up with existing credentials, it throws error' do
       visit new_user_registration_path
       fill_in 'Name', with: @user.name
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password
       fill_in 'Password confirmation', with: @user.password_confirmation
       click_button 'Sign up'
-      expect(page).to have_content('Already have an account? Login')
+      expect(page).to have_content('Email has already been taken')
     end
   end
 
@@ -124,11 +124,10 @@ RSpec.describe 'Users', type: :feature do
       expect(page).to have_button('Send me reset password instructions')
     end
 
-    it 'when user clicks on send me reset password instructions button it will redirect to login page' do
+    it 'should check for blank email' do
       visit new_user_password_path
-      fill_in 'Email', with: @user.email
       click_button 'Send me reset password instructions'
-      expect(page).to have_content('Log in')
+      expect(page).to have_content("Email can't be blank")
     end
   end
 
@@ -154,6 +153,5 @@ RSpec.describe 'Users', type: :feature do
       click_button 'Resend confirmation instructions'
       expect(page).to have_content('Log in')
     end
-    
   end
 end

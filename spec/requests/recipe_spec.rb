@@ -4,9 +4,9 @@ RSpec.describe 'Recipes', type: :request do
   before(:each) do
     @user = User.create(name: 'Test user', email: 'test444@gmail.com', password: '123456',
                         password_confirmation: '123456', confirmation_token: nil, confirmed_at: Time.now)
-    @recipe = Recipe.create(name: 'Test recipe', preparation_time: 10.2, cooking_time: 20.3,
+    @recipe = Recipe.create(name: 'Test recipe', preparation_time: 10, cooking_time: 20,
                             description: 'Test description', public: true, user_id: @user.id)
-    @recipe_two = Recipe.create(name: 'Test recipe Two', preparation_time: 10.2, cooking_time: 20.3,
+    @recipe_two = Recipe.create(name: 'Test recipe Two', preparation_time: 10, cooking_time: 20,
                                 description: 'Test description two', public: true, user_id: @user.id)
     post user_session_path params: { user: { email: @user.email, password: @user.password } }
   end
@@ -44,7 +44,7 @@ RSpec.describe 'Recipes', type: :request do
       expect(response.body).to include(@user.recipes.first.name)
     end
   end
-  
+
   describe 'GET /recipes/:id' do
     it 'returns http success' do
       get recipe_path(@recipe)
@@ -55,11 +55,10 @@ RSpec.describe 'Recipes', type: :request do
       get recipe_path(@recipe)
       expect(response).to render_template('show').or(render_template('recipes/show'))
     end
-    
+
     it 'displays the recipe name' do
       get recipe_path(@recipe)
       expect(response.body).to include(@recipe.name)
     end
   end
-
 end
