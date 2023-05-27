@@ -1,6 +1,10 @@
-<%= render partial: 'recipe', collection: @recipes, locals: {recipe: @recipe}  %>
+<div class="recipe-container">
+  <%= render partial: 'recipe', collection: @recipes, locals: {recipe: @recipe}  %>
+</div>
+
 <div class="buttons">
     <%= button_to 'Back to Foods', foods_path, method: :get, class: 'btn' %>
     <%= button_to 'Show Public Recipes', public_recipes_path , method: :get, class: 'btn' %>
+    <%= button_to 'Add a new recipe', new_recipe_path , method: :get, class: 'btn' %>
     <%= button_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn' %>
   </div>

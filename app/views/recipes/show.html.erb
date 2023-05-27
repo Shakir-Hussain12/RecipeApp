@@ -1,16 +1,16 @@
-<h2><%= @recipe.name %></h2>
-
-<div>
-  <div class="padded">
+<%= button_to 'Back to Recipes', recipes_path, method: :get, class: 'special-btn' %>
+<h2 style="text-align: center;margin-top: 8%"><%= @recipe.name %></h2>
+<div class="show-recipe-container">
+  <div class="details">
     <div>
-      <span class="bold"><%= t('.preparation_time') %></span>
+      <span class="bold"><%= t('.preparation_time: ') %></span>
       <span>
         <%= pluralize(@recipe.preparation_time, 'hour') %>
       </span>
     </div>
 
     <div>
-      <span class="bold"><%= t('.cooking_time') %></span>
+      <span class="bold"><%= t('.cooking_time: ') %></span>
       <span>
         <%= pluralize(@recipe.cooking_time, 'hour') %>
       </span>
@@ -23,7 +23,7 @@
     <% end %>
   </div>
 
-  <div>
+  <div class="checkbox">
     <% if @recipe.owner?(current_user) %>
       <%= form_with model: @recipe do |form| %>
         <% @recipe.errors.full_messages.each do |error| %>
@@ -38,34 +38,3 @@
     <% end %>
   </div>
 <div>
-
-<div class="button-container">
-  <button class="btn-link">
-    <%= t('.generate_shopping_list') %>
-  </button>
-
-  <% if @recipe.owner?(current_user) %>
-    <%= link_to t('.add_ingredient'), new_recipe_recipe_food_path(@recipe), class: 'btn-link' %>
-  <% end %>
-</div>
-
-  <div>
-  <table>
-    <thead>
-      <tr>
-        <th><%= t('.name') %></th>
-        <th><%= t('.quantity') %></th>
-        <th><%= t('.price') %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @recipe.recipe_foods.each do |recipe_food| %>
-        <tr>
-          <td><%= recipe_food.food.name %></td>
-          <td><%= recipe_food.quantity %> <%= recipe_food.food.measurement_unit %> </td>
-          <td>$<%= recipe_food.food.price * recipe_food.quantity %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>

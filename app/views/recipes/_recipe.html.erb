@@ -1,5 +1,5 @@
 <article class="recipe">
-  <div>
+  <div class="left-side">
     <div>
     <%= link_to recipe.name, recipe_path(recipe) %>
     </div>
@@ -12,7 +12,7 @@
       <% end %>
     </div>
   </div>
-  <div>
+  <div class="right-side">
     <%= recipe.description %>
   </div>
 </article>

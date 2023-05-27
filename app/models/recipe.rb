@@ -14,7 +14,7 @@ class Recipe < ApplicationRecord
   end
 
   def owner?(current_user)
-    user == current_user || user.admin?
+    user == current_user || current_user.admin?
   end
 
   after_save :update_count
