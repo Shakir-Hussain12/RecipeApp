@@ -37,7 +37,6 @@ class FoodsController < ApplicationController
       .having('SUM(public_recipes.quantity) > foods.quantity')
 
     @total_food_items = @shopping_list.length
-    puts @total_food_items
     @total = @shopping_list.sum { |food| (food.total_quantity - food.food_quantity) * food.price }
   end
 
