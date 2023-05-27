@@ -9,6 +9,16 @@
   padding-inline-start: 2%;
 }
 
+.food-container,
+.public-recipes-container,
+.recipe-container,
+.add-ingredient-container,
+.general-container {
+  max-width: 50%;
+  margin: auto;
+  margin-top: 10%;
+}
+
 .food-form {
   max-width: 25%;
   margin-top: 8%;
@@ -104,11 +114,6 @@
   color: white;
 }
 
-.food-container {
-  max-width: 60%;
-  margin: 10% auto;
-}
-
 .food-table {
   border-collapse: collapse;
   min-width: 100%;
@@ -126,21 +131,18 @@ tbody {
   font-family: sans-serif;
 }
 
-.public-recipes-container {
-  max-width: 40%;
-  margin: 10% auto;
-}
-
 .public-recipes-container > h2 {
   text-align: center;
 }
 
 .public-recipe {
   border: 3px solid;
+  display: flex;
   border-radius: 20px;
-  padding: 1% 5%;
   margin-bottom: 5%;
   color: black;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .link {
@@ -153,12 +155,6 @@ tbody {
 
 .item:last-of-type > a:hover {
   color: red;
-}
-
-.recipe-container {
-  max-width: 50%;
-  margin: auto;
-  margin-top: 15%;
 }
 
 .recipe {
@@ -207,8 +203,7 @@ tbody {
 
 .show-recipe-container {
   display: flex;
-  justify-content: space-between;
-  padding-inline-start: 25%;
+  justify-content: space-around;
 }
 
 .details {
@@ -218,4 +213,65 @@ tbody {
 .details * {
   margin-bottom: 5%;
   font-size: 1.2rem;
+}
+
+.add-ingredient-name {
+  display: flex;
+  font-size: 1.5rem;
+  align-items: center;
+  gap: 1%;
+}
+
+.ingredient-field {
+  display: flex;
+  gap: 5%;
+  margin-bottom: 2%;
+}
+
+.quantity-field {
+  display: flex;
+  gap: 5%;
+  margin-bottom: 2%;
+  align-items: center;
+}
+
+.quantity-field input {
+  max-width: 90%;
+  height: 3vh;
+  margin-top: 3px;
+}
+
+.quantity-field + .food-btn input {
+  padding: 2%;
+}
+
+.ingredient-heading {
+  text-align: center;
+  margin-top: 5%;
+  text-decoration:underline;
+  text-transform: capitalize;
+}
+
+.general-container {
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 5%;
+}
+
+.button-container > .btn-link {
+  text-decoration: none;
+  color: black;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 1%;
+  margin: 2%;
+}
+
+.button-container > .btn-link:hover {
+  background-color: lightblue;
+  box-shadow: 3px 3px 3px 2px black;
 }

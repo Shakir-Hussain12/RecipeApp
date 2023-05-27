@@ -1,7 +1,7 @@
 <tr class="body-row">
     <td class="item"><%= food.name %></td>
     <td class="item"><%= food.measurement %></td>
-    <td class="item"><%= food.price %></td>
+    <td class="item"><%= number_to_currency(food.price) %></td>
     <td class="item">
         <%= link_to 'Delete', food_path(food), method: :delete, data: { confirm: 'Are you sure?' } %>
     </td>
