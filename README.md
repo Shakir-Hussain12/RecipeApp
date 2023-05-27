@@ -96,7 +96,6 @@ To run the project, execute the following command:
 
 -  Type `Rspec`: To run test 
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
