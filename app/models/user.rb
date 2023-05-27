@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { minimum: 5, maximum: 50 }, allow_blank: false
 
   def admin?
-    return true
+    role == 'admin'
+    true
   end
 end

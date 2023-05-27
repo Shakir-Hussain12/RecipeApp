@@ -27,7 +27,7 @@
 }
 
 .food-btn {
-   display: flex;
+  display: flex;
 }
 
 .actions > input,
@@ -41,7 +41,6 @@
 }
 
 .food-btn > input {
-  margin: 2%;
   padding: 3%;
   min-width: 25%;
   margin: 3% 30% 0 30%;
