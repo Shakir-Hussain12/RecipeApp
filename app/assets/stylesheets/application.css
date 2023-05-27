@@ -56,16 +56,6 @@
   margin: 3% 30% 0 30%;
 }
 
-.field input:not(:nth-of-type(2)) {
-  height: 30px;
-  min-width: 90%;
-  border-radius: 5px;
-  filter: drop-shadow(2px 3px 4px black);
-  border: none;
-  margin-bottom: 2%;
-  outline: none;
-}
-
 .buttons,
 .food-buttons {
   display: flex;
@@ -98,14 +88,6 @@
 .btn:hover {
   background-color: blue;
   color: white;
-  cursor: pointer;
-}
-
-.actions > input:hover,
-.food-btn > input:hover {
-  background-color: green;
-  color: white;
-  box-shadow: 5px 5px 5px black;
   cursor: pointer;
 }
 
@@ -151,10 +133,6 @@ tbody {
 
 .heading + .heading {
   padding-left: 20px;
-}
-
-.item:last-of-type > a:hover {
-  color: red;
 }
 
 .recipe {
@@ -248,7 +226,7 @@ tbody {
 .ingredient-heading {
   text-align: center;
   margin-top: 5%;
-  text-decoration:underline;
+  text-decoration: underline;
   text-transform: capitalize;
 }
 
@@ -271,7 +249,29 @@ tbody {
   margin: 2%;
 }
 
+.field input:not(:nth-of-type(2)) {
+  height: 30px;
+  min-width: 90%;
+  border-radius: 5px;
+  filter: drop-shadow(2px 3px 4px black);
+  border: none;
+  margin-bottom: 2%;
+  outline: none;
+}
+
 .button-container > .btn-link:hover {
   background-color: lightblue;
   box-shadow: 3px 3px 3px 2px black;
+}
+
+.item:last-of-type > a:hover {
+  color: red;
+}
+
+.actions > input:hover,
+.food-btn > input:hover {
+  background-color: green;
+  color: white;
+  box-shadow: 5px 5px 5px black;
+  cursor: pointer;
 }
