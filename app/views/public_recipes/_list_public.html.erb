@@ -1,16 +1,17 @@
 <%= link_to recipe_path(recipe), class: 'link' do %>
     <div class="public-recipe">
-        <h1>
-            <%= recipe.name %>
-        </h1>
-        <p>
-            <% user = User.find(recipe.user_id) %>
-            By <%= user.name %>
-        </p>
-        <p>
-            Total Food Items: <%= recipe.foods.count %>
-            Preperation Time: <%= recipe.preparation_time %>
-        </p>
+        <div>
+            <h1>
+                <%= recipe.name %>
+            </h1>
+            <p>
+                By <%= recipe.user.name %>
+            </p>
+        </div>
+        <div>
+            <p>Total Food Items: <%= recipe.public_recipes.length %></p>
+            <p>Total price: <%= number_to_currency(recipe.public_recipes.sum { |food| food.quantity * food.food.price }) %></p>
+        </div>
     </div>
 <% end %>
 

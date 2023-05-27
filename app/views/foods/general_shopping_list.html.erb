@@ -1,0 +1,33 @@
+<div class="buttons">
+    <%= button_to 'Back to Foods', foods_path, method: :get, class: 'btn' %>
+    <%= button_to 'Back to Recipes', recipes_path , method: :get, class: 'btn' %>
+    <%= button_to 'Show Public Recipes', public_recipes_path , method: :get, class: 'btn' %>
+    <%= button_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn' %>
+</div>
+
+<div class="general-container">
+    <h2>Shopping List</h2>
+
+    <div class="general-details">
+        <h5>Amount of food items to buy: <%=  @total_food_items %></h5>
+        <h5>Total value of food needed: <%= @total_food_items > 0 ? number_to_currency(@total) : '$0' %></h5>
+    </div>
+
+    <table class="food-table">
+        <tr class="head-row">
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Total price</th>
+        </tr>
+        <% if @total_food_items > 0 %>
+            <% @shopping_list.each do |food| %>
+            <% total = food.total_quantity - food.food_quantity %>
+            <tr class="body-row">
+                <td class="item"><%= food.name %></td>
+                <td class="item"><%= total %></td>
+                <td class="item"><%= number_to_currency(total * food.price) %></td>
+            </tr>
+            <% end %>
+        <% end %>
+    </table>
+</div>

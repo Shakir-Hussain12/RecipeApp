@@ -1,7 +1,6 @@
 class Recipe < ApplicationRecord
   belongs_to :user
-  has_many :public_recipes
-  has_many :foods, through: :public_recipes
+  has_many :public_recipes, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 5, maximum: 50 }, allow_blank: false
   validates :preparation_time, presence: true, numericality: { only_integer: true, greater_than: 0 }

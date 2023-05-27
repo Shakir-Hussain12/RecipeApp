@@ -1,0 +1,34 @@
+<%= button_to 'Back to Recipes', recipes_path , method: :get, class: 'special-btn' %>
+<div class="add-ingredient-container">
+    <div class="add-ingredient-name">
+      <h5>Recipe Name: </h5><p><%= @recipe.name %></p>
+    </div>
+    <p> Description: <%= @recipe.description %> </p>
+  
+    <div class="add-ingredient-form">
+      <h3 class="ingredient-heading">Add ingredient </h3>
+      <%= form_with model:[@recipe, @public_recipe], url:recipe_public_recipes_path(@recipe.id) do |form| %>
+        <% if form.object.errors.any? %>
+            <div class="alert">
+                <% form.object.errors.full_messages.each do |message| %>
+                    <div><%= message.inspect %></div>
+                <% end %>
+            </div>
+        <% end %>
+
+        <div class="ingredient-field">
+            <%= form.label :ingredients %>
+            <%= form.collection_select :food_id, @current_user.foods , :id, :name, {prompt: "Select Ingredient"} %>
+        </div>
+
+        <div class="quantity-field">
+            <%= form.label :quantity %>
+            <%= form.number_field :quantity, step: :any, required:true %>
+        </div>
+
+        <div class="food-btn">
+            <%= form.submit 'Add ingredient'%>
+        </div>
+      <%end%>
+    </div>
+</div>

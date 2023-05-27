@@ -1,19 +1,18 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.includes(:user).all
+    @recipes = current_user.recipes.order(:created_at)
   end
 
   def show
-    @recipe = Recipe.includes(:user).find(params[:id])
+    @recipe = Recipe.find(params[:id])
   end
 
   def new
-    @recipe = Recipe.new
+    @recipe = current_user.recipes.new
   end
 
   def create
-    @user = current_user
-    @recipe = @user.recipes.new(recipe_params)
+    @recipe = current_user.recipes.new(recipe_params)
 
     if @recipe.save
       redirect_to recipes_path, notice: t('.success')
@@ -23,7 +22,7 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    @recipe = Recipe.find(params[:id])
+    @recipe = current_user.recipes.find(params[:id])
     @recipe.destroy
     redirect_to recipes_path, notice: t('.success')
   rescue ActiveRecord::RecordNotFound
@@ -31,7 +30,7 @@ class RecipesController < ApplicationController
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
+    @recipe = current_user.recipes.find(params[:id])
     @recipe.update(recipe_params)
     redirect_to recipe_path(@recipe), notice: t('.success')
   rescue ActiveRecord::RecordNotFound

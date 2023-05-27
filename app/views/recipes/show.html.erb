@@ -37,4 +37,41 @@
       <% end %>
     <% end %>
   </div>
-<div>
+</div>
+
+<div class="button-container">
+  <%= link_to 'Generate shopping list', general_shopping_list_path, class: "btn-link" %>
+
+  <% if @recipe.owner?(current_user) %>
+    <%= link_to 'Add ingredient', new_recipe_public_recipe_path(@recipe.id), class: "btn-link" %>
+  <% end %>
+</div>
+
+<div class="recipe_table">
+  <table class="food-table">
+      <tr class="head-row">
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Value</th>
+        <th>Actions</th>
+      </tr>
+      <% @recipe.public_recipes.includes(:food).each do |public_recipe| %>
+          <tr class="body-row">
+              <td class="item"><%= public_recipe.food.name %></td>
+              <td class="item"><%= public_recipe.quantity %> <%= public_recipe.food.measurement %></td>
+              <td class="item"><%= number_to_currency(public_recipe.food.price * public_recipe.quantity) %></td>
+              <td class="item">
+              <a href="/">
+                  Modify
+              </a>
+              <% if can? :destroy, public_recipe %>
+                  <%= link_to 'Remove', recipe_public_recipe_path(@recipe.id,public_recipe.id),class: "btn-danger", data: {
+                                  turbo_method: :delete,
+                                  turbo_confirm: "Are you sure?"
+                              } %>
+              <% end %>
+              </td>
+        </tr>
+      <% end %>
+  </table>
+</div>
