@@ -1,10 +1,10 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.includes(:user).all
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.includes(:user).find(params[:id])
   end
 
   def new
@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
 
   def create
     @user = current_user
-    @recipe = @user.recipes.new(params[:recipe])
+    @recipe = @user.recipes.new(recipe_params)
 
     if @recipe.save
       redirect_to recipes_path, notice: t('.success')
