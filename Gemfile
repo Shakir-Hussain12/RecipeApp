@@ -82,5 +82,7 @@ end
 
 gem 'cancancan'
 gem 'devise'
+gem 'factory_bot_rails'
 gem 'jquery-rails'
 gem 'rails-controller-testing'
+gem 'shoulda-matchers'
