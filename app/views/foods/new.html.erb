@@ -1,4 +1,5 @@
 <%= button_to 'Back to Foods', foods_path, method: :get, class: 'special-btn' %>
+<h1 style="text-align: center;">Create New Food</h1>
 <div class="food-form">
     <div class="my-form">
         <%= form_with(model: @food, url: foods_path, local: true, method: :post) do |form| %>

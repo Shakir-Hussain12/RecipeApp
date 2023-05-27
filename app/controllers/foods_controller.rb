@@ -24,9 +24,11 @@ class FoodsController < ApplicationController
     puts 'deleting'
     @food = Food.find(params[:id])
     @food.destroy
-    redirect_to foods_path, flash: { success: t('Deleted Successfully') }
+    flash[:success] = 'Food deleted successfully'
+    redirect_to foods_path
   rescue ActiveRecord::RecordNotFound
-    redirect_to foods_path, flash: { alert: t('Deletion Failed') }
+    flash[:alert] = 'Deletion failed'
+    redirect_to foods_path
   end
 
   private
