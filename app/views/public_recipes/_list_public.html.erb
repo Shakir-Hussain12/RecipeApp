@@ -4,10 +4,11 @@
             <%= recipe.name %>
         </h1>
         <p>
-            <%= recipe.description %>
+            <% user = User.find(recipe.user_id) %>
+            By <%= user.name %>
         </p>
         <p>
-            Cooking Time: <%= recipe.cooking_time %>
+            Total Food Items: <%= recipe.foods.count %>
             Preperation Time: <%= recipe.preparation_time %>
         </p>
     </div>

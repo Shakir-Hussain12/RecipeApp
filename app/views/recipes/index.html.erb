@@ -1,1 +1,5 @@
 <%= render partial: 'recipe', collection: @recipes, locals: {recipe: @recipe}  %>
+<div class="buttons">
+    <%= button_to 'Back to Foods', foods_path, method: :get, class: 'btn' %>
+    <%= button_to 'Show Public Recipes', public_recipes_path , method: :get, class: 'btn' %>
+  </div>

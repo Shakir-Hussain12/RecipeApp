@@ -2,3 +2,7 @@
     <h2>Public Recipes</h2>
     <%= render partial: 'list_public', collection: recipes, as: :recipe %>
 </div>
+<div class="buttons">
+    <%= button_to 'Show all Foods', foods_path, method: :get, class: 'btn' %>
+    <%= button_to 'Show all Recipes', recipes_path , method: :get, class: 'btn' %>
+  </div>
