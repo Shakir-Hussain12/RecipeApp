@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   resources :public_recipes, only: %i[index]
 
-  get '/general_shopping_list', to: 'foods#general_shopping_list', as: :general_shopping_list
+  get '/general_shopping_list/:id', to: 'recipes#general_shopping_list', as: :general_shopping_list
   
   # Defines the root path route ("/")
   authenticated :user do

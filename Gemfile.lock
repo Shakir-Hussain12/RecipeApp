@@ -296,7 +296,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jquery-rails
-  pg (~> 1.1)
+  pg (~> 1.5, >= 1.5.3)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
   rails-controller-testing

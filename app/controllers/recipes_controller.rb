@@ -37,6 +37,21 @@ class RecipesController < ApplicationController
     redirect_to recipe_path(@recipe), alert: t('.failure')
   end
 
+  def general_shopping_list
+    recipe = Recipe.find(params[:id])
+    food_recipes = PublicRecipe.where(recipe_id: recipe.id).includes(:food)
+    total_price = 0
+    
+    food_recipes.each do |food_recipe|
+      food = food_recipe.food
+      quantity = food_recipe.quantity
+      price = food.price
+      total_price += quantity * price
+    end
+
+    render 'general_shopping_list', locals: { food_recipes: , total_price: }
+  end
+
   private
 
   def recipe_params

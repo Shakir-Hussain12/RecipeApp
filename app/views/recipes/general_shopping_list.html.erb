@@ -9,25 +9,23 @@
     <h2>Shopping List</h2>
 
     <div class="general-details">
-        <h5>Amount of food items to buy: <%=  @total_food_items %></h5>
-        <h5>Total value of food needed: <%= @total_food_items > 0 ? number_to_currency(@total) : '$0' %></h5>
+        <h5>Amount of food items to buy: <%=  food_recipes.size %></h5>
+        <h5>Total value of food needed: <%= number_to_currency(total_price) %></h5>
     </div>
-
+</div>
+<div class="recipe_table">
     <table class="food-table">
         <tr class="head-row">
-            <th>Name</th>
+            <th>Food</th>
             <th>Quantity</th>
-            <th>Total price</th>
+            <th>Value</th>
         </tr>
-        <% if @total_food_items > 0 %>
-            <% @shopping_list.each do |food| %>
-            <% total = food.total_quantity - food.food_quantity %>
+        <% food_recipes.includes(:food).each do |public_recipe| %>
             <tr class="body-row">
-                <td class="item"><%= food.name %></td>
-                <td class="item"><%= total %></td>
-                <td class="item"><%= number_to_currency(total * food.price) %></td>
+                <td class="item"><%= public_recipe.food.name %></td>
+                <td class="item"><%= public_recipe.quantity %> <%= public_recipe.food.measurement %></td>
+                <td class="item"><%= number_to_currency(public_recipe.food.price * public_recipe.quantity) %></td>
             </tr>
-            <% end %>
         <% end %>
     </table>
 </div>

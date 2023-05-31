@@ -40,7 +40,7 @@
 </div>
 
 <div class="button-container">
-  <%= link_to 'Generate shopping list', general_shopping_list_path, class: "btn-link" %>
+  <%= link_to 'Generate shopping list', general_shopping_list_path(@recipe.id), class: "btn-link" %>
 
   <% if @recipe.owner?(current_user) %>
     <%= link_to 'Add ingredient', new_recipe_public_recipe_path(@recipe.id), class: "btn-link" %>

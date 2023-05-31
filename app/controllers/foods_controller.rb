@@ -29,17 +29,6 @@ class FoodsController < ApplicationController
     end
   end
 
-  def general_shopping_list
-    @shopping_list = current_user.foods.select('foods.name', 'SUM(public_recipes.quantity) AS total_quantity', 'foods.quantity AS food_quantity',
-                                               'foods.price')
-      .joins(public_recipes: :recipe)
-      .group('foods.name, foods.quantity, foods.price')
-      .having('SUM(public_recipes.quantity) > foods.quantity')
-
-    @total_food_items = @shopping_list.length
-    @total = @shopping_list.sum { |food| (food.total_quantity - food.food_quantity) * food.price }
-  end
-
   private
 
   def fetch_foods
